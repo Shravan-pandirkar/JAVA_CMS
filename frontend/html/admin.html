@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Couching Management System</title>
+    <link rel="stylesheet" href="/frontend/css/admin.css">
+</head>
+<body>
+
+    <div id="loginSection">
+        <div class="login-card">
+            <h2>Admin Login</h2>
+            <input type="password" id="adminPassword" placeholder="Enter admin password">
+            <button onclick="handleAdminLogin()">Login</button>
+            <div id="errorMsg" class="error-msg">Incorrect password. Please try again.</div>
+            <br><br>
+            <a href="/frontend/html/Home_Page.html" style="color: #666; text-decoration: none; font-size: 14px;">&larr; Back to Home</a>
+        </div>
+    </div>
+
+    <div id="loginPopup" class="popup">Login successfully!</div>
+
+    <div id="dashboardSection">
+        <div class="dashboard-header">
+            <h2>Admin Dashboard - Couching Management</h2>
+            <button class="btn-logout" onclick="handleLogout()">Logout</button>
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card active" onclick="selectCourse('neet', this)">
+                <h3>neet</h3>
+            </div>
+            <div class="course-card" onclick="selectCourse('10th', this)">
+                <h3>10th</h3>
+            </div>
+            <div class="course-card" onclick="selectCourse('12th', this)">
+                <h3>12th</h3>
+            </div>
+            <div class="course-card" onclick="selectCourse('cet', this)">
+                <h3>cet</h3>
+            </div>
+            <div class="course-card" onclick="selectCourse('gate', this)">
+                <h3>gate</h3>
+            </div>
+        </div>
+
+        <div class="analytics-container">
+            <h3 id="analyticsTitle">Analytics for neet</h3>
+            <div class="charts-wrapper">
+                <div class="chart-box">
+                    <h4>Enrollment Trend (Last 2 Years & 2026)</h4>
+                    <div class="bar-chart" id="yearChart"></div>
+                </div>
+                <div class="chart-box">
+                    <h4>Gender Distribution (Boys vs Girls)</h4>
+                    <div class="bar-chart" id="genderChart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="students-section">
+            <h3 id="listTitle">Enrolled Students List - neet</h3>
+            <br>
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search student by name, email or phone..." onkeyup="filterStudents()">
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Course</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/frontend/js/admin.js"></script>
+</body>
+</html>
